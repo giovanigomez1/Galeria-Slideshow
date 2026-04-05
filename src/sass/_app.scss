@@ -1,0 +1,31 @@
+@use '../sass/variables' as variables;
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+:root {
+  --white: #FFFFFF;
+  --black: #000000;
+  --gray400: #7D7D7D;
+  --gray200: #D8D8D8;
+  --gray150: #E5E5E5;
+  --gray100: #F3F3F3;
+}
+
+.container {
+  max-width: 136rem;
+  margin: 0 auto;
+}
+
+.dissabled {
+  opacity: .2 !important;
+}
