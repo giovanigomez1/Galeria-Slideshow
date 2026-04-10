@@ -4,6 +4,7 @@ import leftArr from '../assets/shared/icon-back-button.svg'
 import rightArr from '../assets/shared/icon-next-button.svg'
 import viewImg from '../assets/shared/icon-view-image.svg'
 import ProgressBar from "./ProgressBar"
+import Modal from "./Modal"
 
 
 
@@ -14,18 +15,14 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
     setSlideGallery(imageData)
   }, [])
 
+  const [openModal, setOpenModal] = useState(false)
 
 
 
   const currentSlide = slideGallery.filter(slide => slide.name === goToSlide)[0]
-
-
-  console.log(slideGallery.length)
-
   let currSlideInd = slideGallery.findIndex(ele => ele.name === currentSlide?.name) + 1
   const progressBar = ((100 / slideGallery.length) * currSlideInd).toFixed(0)
 
-  console.log(currSlideInd)
 
   function getNextSlide() {
     if (currSlideInd > slideGallery.length - 1) return
@@ -38,8 +35,13 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
     if (currSlideInd === 1) return
     const prev = slideGallery[currSlideInd - 2]
     jumpToSlide(prev.name)
-
   }
+
+  function handleClose() {
+    setOpenModal(false)
+  }
+
+  console.log(currentSlide)
 
 
 
@@ -62,7 +64,7 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
             <div className="autor">
               <img src={currentSlide?.artist.image} alt="" />
             </div>
-            <div className="viewImage">
+            <div className="viewImage" onClick={() => setOpenModal(!openModal)}>
               <img src={viewImg} alt="" />
               <p>View Image</p>
             </div>
@@ -108,8 +110,18 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
             <img src={rightArr} alt="" />
           </button>
         </div>
-
       </div>
+      <Modal isOpen={openModal} onClose={handleClose}>
+        <div className="image__modal">
+          <button>CLOSE</button>
+          <img style={{ height: "45vw" }} src={currentSlide?.images.hero.large} alt="" />
+        </div>
+
+
+      </Modal>
+
+
+
     </>
   )
 }

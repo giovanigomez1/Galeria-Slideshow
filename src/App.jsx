@@ -7,6 +7,7 @@ import SlideShow from "./components/SlideShow"
 
 
 
+
 function App() {
 
   const navigate = useNavigate()
