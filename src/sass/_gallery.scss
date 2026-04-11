@@ -28,8 +28,7 @@
     min-height: 25rem;
     position: relative;
     cursor: pointer;
-
-
+    transition: all .2s ease-in;
 
     & img {
       width: 100%;
@@ -38,7 +37,6 @@
       display: block;
       z-index: 0;
     }
-
 
     &_inf {
       position: absolute;
@@ -54,7 +52,6 @@
       justify-content: flex-end;
       gap: .8rem;
 
-
       & p {
         font-size: 2.4rem;
         color: var(--white);
@@ -68,7 +65,7 @@
     }
   }
 
-
-
-
+  &--ele:hover {
+    opacity: .6;
+  }
 }

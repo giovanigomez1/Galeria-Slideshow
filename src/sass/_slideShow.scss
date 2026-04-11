@@ -19,8 +19,6 @@
     padding: 0 2rem;
   }
 
-
-
   &__detail {
     display: grid;
     grid-template-columns: minmax(65%, 84.8rem) minmax(34%, 1fr);
@@ -33,8 +31,6 @@
       position: relative;
       width: 100%;
 
-
-
       .image {
         & img {
           width: 100%;
@@ -43,7 +39,6 @@
           @media only screen and (max-width: variables.$bp-small) {
             max-width: 100%;
           }
-
         }
       }
 
@@ -91,7 +86,6 @@
           & h3 {
             font-size: 1.5rem;
             color: var(--gray400);
-
           }
         }
       }
@@ -119,8 +113,6 @@
             width: 6.4rem;
           }
         }
-
-
       }
 
       .viewImage {
@@ -145,9 +137,7 @@
           font-size: 1rem;
           text-transform: uppercase;
         }
-
       }
-
     }
 
     &--desc {
@@ -202,7 +192,6 @@
           margin-top: -5rem;
         }
 
-
         & p {
           font-size: 1.4rem;
           color: var(--gray400);
@@ -215,8 +204,6 @@
       }
     }
   }
-
-
 }
 
 .controls {
@@ -291,6 +278,5 @@
     cursor: pointer;
     color: white;
     font-size: 1.4rem;
-
   }
 }

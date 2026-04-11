@@ -1,6 +1,3 @@
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
-
 import logo from '../assets/shared/logo.svg'
 
 export default function Header({ openSlide, handleGoToSlide }) {

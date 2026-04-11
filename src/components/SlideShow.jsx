@@ -10,42 +10,31 @@ import Modal from "./Modal"
 
 export default function SlideShow({ goToSlide, jumpToSlide }) {
 
+
   const [slideGallery, setSlideGallery] = useState([])
   useEffect(() => {
     setSlideGallery(imageData)
   }, [])
 
+
   const [openModal, setOpenModal] = useState(false)
-
-
-
   const currentSlide = slideGallery.filter(slide => slide.name === goToSlide)[0]
   let currSlideInd = slideGallery.findIndex(ele => ele.name === currentSlide?.name) + 1
   const progressBar = ((100 / slideGallery.length) * currSlideInd).toFixed(0)
-
 
   function getNextSlide() {
     if (currSlideInd > slideGallery.length - 1) return
     const next = slideGallery[currSlideInd]
     jumpToSlide(next.name)
   }
-
-
   function getPrevSlide() {
     if (currSlideInd === 1) return
     const prev = slideGallery[currSlideInd - 2]
     jumpToSlide(prev.name)
   }
-
   function handleClose() {
     setOpenModal(false)
   }
-
-  console.log(currentSlide)
-
-
-
-
 
   return (
     <>
@@ -89,7 +78,6 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
             height='10'
           />
         </div>
-
         <div className="controls__inf">
           <h3>{currentSlide?.name}</h3>
           <p>{currentSlide?.artist.name}</p>
@@ -116,15 +104,7 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
           <button>CLOSE</button>
           <img src={currentSlide?.images.hero.large} alt="" />
         </div>
-
-
       </Modal>
-
-
-
     </>
   )
 }
-
-
-// 

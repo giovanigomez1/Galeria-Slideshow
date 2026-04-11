@@ -1,19 +1,15 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Routes, Route, useNavigate } from "react-router-dom"
 import Header from "./components/Header"
 import GalleryList from "./components/GalleryList"
 import SlideShow from "./components/SlideShow"
 
 
-
-
-
 function App() {
-
   const navigate = useNavigate()
   const [goToSlide, setGoToSlide] = useState("")
   const [openSlide, setOpenSlide] = useState(true)
-  const [slideInx, setSlideInx] = useState(0)
+
 
   function handleGoToSlide(slide) {
     setGoToSlide(slide)
@@ -24,13 +20,9 @@ function App() {
       navigate('/')
     }
   }
-
   function jumpToSlide(slide) {
     setGoToSlide(slide)
   }
-
-
-
 
   return (
     <>
@@ -42,5 +34,4 @@ function App() {
     </>
   )
 }
-
 export default App
