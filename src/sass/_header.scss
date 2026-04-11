@@ -1,11 +1,16 @@
+@use '../sass/variables' as variables;
+
 .header {
   margin: 4rem auto;
   height: 8.9rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-
   border-bottom: 1px solid var(--gray150);
+
+  @media only screen and (max-width: variables.$bp-largest) {
+    padding: 0 3rem;
+  }
 
   &__in {
     height: 4.8rem;
@@ -13,6 +18,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    &--logo {
+      & img {
+        @media only screen and (max-width: variables.$bp-medium) {
+          height: 3.2rem;
+        }
+      }
+    }
 
     &--start {
       & button {

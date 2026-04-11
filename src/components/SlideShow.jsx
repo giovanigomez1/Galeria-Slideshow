@@ -114,7 +114,7 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
       <Modal isOpen={openModal} onClose={handleClose}>
         <div className="image__modal">
           <button>CLOSE</button>
-          <img style={{ height: "45vw" }} src={currentSlide?.images.hero.large} alt="" />
+          <img src={currentSlide?.images.hero.large} alt="" />
         </div>
 
 

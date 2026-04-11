@@ -1,8 +1,26 @@
+@use '../sass/variables' as variables;
+
 .gallery__cont {
   width: 100%;
   column-count: 4;
   column-gap: 4rem;
   list-style: none;
+
+  @media only screen and (max-width: variables.$bp-largest) {
+    padding: 0 3rem;
+  }
+
+  @media only screen and (max-width: variables.$bp-largest) {
+    column-count: 3;
+  }
+
+  @media only screen and (max-width: variables.$bp-medium) {
+    column-count: 2;
+  }
+
+  @media only screen and (max-width: variables.$bp-small) {
+    column-count: 1;
+  }
 
   &--ele {
     break-inside: avoid;
@@ -50,16 +68,6 @@
     }
   }
 
-  // &--ele::after {
-  // content: '';
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // background-image: linear-gradient(rgba(255, 255, 255, 0.047) 0%, rgba(0, 0, 0, 0.538) 84%);
-  // width: 100%;
-  // height: 100%;
-  // z-index: 0;
-  // }
 
 
 
