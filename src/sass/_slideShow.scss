@@ -138,6 +138,10 @@
           text-transform: uppercase;
         }
       }
+
+      .viewImage:hover {
+        opacity: .6;
+      }
     }
 
     &--desc {

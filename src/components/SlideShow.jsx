@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import imageData from '../data/data2.json'
+import { useParams, useNavigate } from "react-router-dom"
+import imageData from '../data/data.json'
 import leftArr from '../assets/shared/icon-back-button.svg'
 import rightArr from '../assets/shared/icon-next-button.svg'
 import viewImg from '../assets/shared/icon-view-image.svg'
@@ -8,29 +9,38 @@ import Modal from "./Modal"
 
 
 
-export default function SlideShow({ goToSlide, jumpToSlide }) {
+export default function SlideShow() {
 
+  const { name } = useParams()
+  const navigate = useNavigate()
+  function addSlug(text) {
+    return text.toLowerCase().replace(/\s+/g, "-")
+  }
 
   const [slideGallery, setSlideGallery] = useState([])
   useEffect(() => {
-    setSlideGallery(imageData)
+    const newData = imageData.map(ele => ({
+      ...ele,
+      slug: addSlug(ele.name)
+    }))
+    setSlideGallery(newData)
   }, [])
 
-
   const [openModal, setOpenModal] = useState(false)
-  const currentSlide = slideGallery.filter(slide => slide.name === goToSlide)[0]
-  let currSlideInd = slideGallery.findIndex(ele => ele.name === currentSlide?.name) + 1
+  const currentSlide = slideGallery.filter(slide => slide.slug === name)[0]
+
+  let currSlideInd = slideGallery.findIndex(ele => ele.slug === currentSlide?.slug) + 1
   const progressBar = ((100 / slideGallery.length) * currSlideInd).toFixed(0)
 
   function getNextSlide() {
     if (currSlideInd > slideGallery.length - 1) return
     const next = slideGallery[currSlideInd]
-    jumpToSlide(next.name)
+    navigate(`/slide/${next.slug}`)
   }
   function getPrevSlide() {
     if (currSlideInd === 1) return
     const prev = slideGallery[currSlideInd - 2]
-    jumpToSlide(prev.name)
+    navigate(`/slide/${prev.slug}`)
   }
   function handleClose() {
     setOpenModal(false)
@@ -42,7 +52,7 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
         <div className="slideShow__detail">
           <div className="slideShow__detail--picture">
             <div className="image">
-              <img src={currentSlide?.images.hero.large} alt="" />
+              <img src={`../${currentSlide?.images.hero.large}`} alt="" />
             </div>
             <div className="title">
               <div className="title__cont">
@@ -51,7 +61,7 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
               </div>
             </div>
             <div className="autor">
-              <img src={currentSlide?.artist.image} alt="" />
+              <img src={`../${currentSlide?.artist.image}`} alt="" />
             </div>
             <div className="viewImage" onClick={() => setOpenModal(!openModal)}>
               <img src={viewImg} alt="" />
@@ -66,7 +76,6 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
               <p>{currentSlide?.description}</p>
               <p>Go to source</p>
             </div>
-
           </div>
         </div>
       </div>
@@ -102,7 +111,7 @@ export default function SlideShow({ goToSlide, jumpToSlide }) {
       <Modal isOpen={openModal} onClose={handleClose}>
         <div className="image__modal">
           <button>CLOSE</button>
-          <img src={currentSlide?.images.hero.large} alt="" />
+          <img src={`../${currentSlide?.images.hero.large}`} alt="" />
         </div>
       </Modal>
     </>
