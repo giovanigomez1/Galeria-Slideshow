@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Routes, Route, useNavigate } from "react-router-dom"
 import Header from "./components/Header"
 import GalleryList from "./components/GalleryList"
@@ -8,6 +8,14 @@ function App() {
   const navigate = useNavigate()
   const [goToSlide, setGoToSlide] = useState("")
   const [openSlide, setOpenSlide] = useState(true)
+
+
+  useEffect(() => {
+    const url = window.location.href.split('/')
+    if (url.length > 4) {
+      setOpenSlide(false)
+    }
+  })
 
   function handleGoToSlide(slide) {
     const slug = slide.toLowerCase().replace(/\s+/g, "-");
@@ -25,7 +33,7 @@ function App() {
       <Header openSlide={openSlide} handleGoToSlide={handleGoToSlide} />
       <Routes>
         <Route path="/" element={<GalleryList handleGoToSlide={handleGoToSlide} />} />
-        <Route path="/slide/:name" element={<SlideShow goToSlide={goToSlide} />} />
+        <Route path="/slide/:name" element={<SlideShow />} />
       </Routes>
     </>
   )

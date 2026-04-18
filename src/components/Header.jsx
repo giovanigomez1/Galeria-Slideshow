@@ -1,6 +1,8 @@
 import logo from '../assets/shared/logo.svg'
 
+
 export default function Header({ openSlide, handleGoToSlide }) {
+
   return (
     <header className="header container">
       <div className="header__in">

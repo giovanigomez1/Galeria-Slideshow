@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import imageData from '../data/data.json'
+import imageData from '../data/data2.json'
 import leftArr from '../assets/shared/icon-back-button.svg'
 import rightArr from '../assets/shared/icon-next-button.svg'
 import viewImg from '../assets/shared/icon-view-image.svg'
