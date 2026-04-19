@@ -7,7 +7,6 @@ export default function GalleryList({ handleGoToSlide }) {
   useEffect(() => {
     setGallery(imageData)
   }, [])
-
   return (
     <div className="gallery container">
       <ul className="gallery__cont">

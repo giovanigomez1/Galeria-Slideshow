@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import imageData from '../data/data2.json'
-import leftArr from '../assets/shared/icon-back-button.svg'
-import rightArr from '../assets/shared/icon-next-button.svg'
-import viewImg from '../assets/shared/icon-view-image.svg'
+import imageData from '../data/data.json'
+import leftArr from '../../public/assets/shared/icon-back-button.svg'
+import rightArr from '../../public/assets/shared/icon-next-button.svg'
+import viewImg from '../../public/assets/shared/icon-view-image.svg'
 import ProgressBar from "./ProgressBar"
 import Modal from "./Modal"
 
@@ -32,16 +32,22 @@ export default function SlideShow() {
   let currSlideInd = slideGallery.findIndex(ele => ele.slug === currentSlide?.slug) + 1
   const progressBar = ((100 / slideGallery.length) * currSlideInd).toFixed(0)
 
+
   function getNextSlide() {
     if (currSlideInd > slideGallery.length - 1) return
     const next = slideGallery[currSlideInd]
     navigate(`/slide/${next.slug}`)
   }
+
   function getPrevSlide() {
     if (currSlideInd === 1) return
     const prev = slideGallery[currSlideInd - 2]
     navigate(`/slide/${prev.slug}`)
+
+
   }
+
+
   function handleClose() {
     setOpenModal(false)
   }

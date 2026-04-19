@@ -6,9 +6,7 @@ import SlideShow from "./components/SlideShow"
 
 function App() {
   const navigate = useNavigate()
-  const [goToSlide, setGoToSlide] = useState("")
   const [openSlide, setOpenSlide] = useState(true)
-
 
   useEffect(() => {
     const url = window.location.href.split('/')
@@ -16,10 +14,8 @@ function App() {
       setOpenSlide(false)
     }
   })
-
   function handleGoToSlide(slide) {
     const slug = slide.toLowerCase().replace(/\s+/g, "-");
-    setGoToSlide(slide)
     setOpenSlide(!openSlide)
     if (openSlide) {
       navigate(`/slide/${slug}`)
